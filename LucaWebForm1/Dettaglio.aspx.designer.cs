@@ -10,15 +10,15 @@
 namespace LucaWebForm1 {
     
     
-    public partial class SiteMaster {
+    public partial class _Dettaglio {
         
         /// <summary>
-        /// Controllo MainContent.
+        /// Controllo Qnta.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox Qnta;
     }
 }
