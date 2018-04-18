@@ -19,9 +19,13 @@ namespace LucaWebForm1 {
 			IDomainModel mock = new MockDomainModel();
 			foreach (Prodotto p in prodotti) {
 				mock.AddProdotto(p.Id, p.Qta);
+				Session["CercaPerId"] = p.Id;
+				Session["CercaPerDescr"] = p.Qta;
 			}
 			Session["listaRichieste"] = null;
+
 			Response.Redirect("~/Ordina.aspx?Messaggio=Richiesta di ordine ANDATA IN PORTO");
+			
 		}
 	}
 }

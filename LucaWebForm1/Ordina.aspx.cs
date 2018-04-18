@@ -21,7 +21,7 @@ namespace LucaWebForm1 {
 			CercaPerDescr = CercaDescr.Text;
 			if (!String.IsNullOrEmpty(CercaId.Text)) {
 				Response.Redirect($"~/Dettaglio.aspx?CercaId={CercaId.Text}");
-			} else if (!String.IsNullOrEmpty(CercaDescr.Text)) {
+			} else if (!String.IsNullOrEmpty(CercaPerDescr)) {
 				IDomainModel mock = new MockDomainModel();
 				ListP = mock.CercaProdottoByDescr(CercaDescr.Text) ?? null;
 				foreach (Prodotto p in ListP) {
@@ -36,7 +36,7 @@ namespace LucaWebForm1 {
 					tdGiacenza.Controls.Add(new Label() { Text = p.Qta.ToString(), CssClass = "col-xs-2" });
 					tr.Cells.Add(tdGiacenza);
 					TableCell tdButton = new TableCell();
-					tdButton.Controls.Add(new Button() { Text = "detail", PostBackUrl = $"Detail?codice={p.Id}", CssClass = "col-xs-2" });
+					tdButton.Controls.Add(new Button() { Text = "detail", PostBackUrl = $"Dettaglio?CercaId={p.Id}", CssClass = "col-xs-2" });
 					tr.Cells.Add(tdButton);
 					Tablettino.Rows.Add(tr);
 				}

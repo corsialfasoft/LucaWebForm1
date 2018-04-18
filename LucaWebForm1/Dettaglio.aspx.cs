@@ -59,7 +59,24 @@ namespace LucaWebForm1 {
 
 	public partial class MockDomainModel : IDomainModel{
 		public Prodotto CercaProdotto(int id){
-			return new Prodotto(){Id=1, Descrizione ="Rondelle", Qta=7, Magazzino = 9876};
+			Prodotto p = new Prodotto();
+			try {
+				Connessione().Open();
+				SqlCommand cmd = new SqlCommand("CercaPerCodice", Connessione());
+				SqlDataReader reader = cmd.ExecuteReader();
+				while(reader.Read()){
+					p.Id = reader.GetInt32(0);
+					p.Descrizione = reader.GetString(1);
+					p.Qta = reader.GetInt32(2);
+				}
+				cmd.Dispose();
+			}catch(Exception e){
+				throw e;
+			}finally{
+				Connessione().Dispose();
+			}
+			return p;		
+		//return new Prodotto(){Id=1, Descrizione ="Rondelle", Qta=7, Magazzino = 9876};
 		}
 
 		public List<Prodotto> CercaProdottoByDescr(string descr) {
@@ -78,6 +95,8 @@ namespace LucaWebForm1 {
 			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 			builder.DataSource = @"(localdb)\MSSQLLocal-DB";
 			builder.InitialCatalog = "RICHIESTE";
+			//SqlConnection conn = new SqlConnection(builder.ConnectionString);
+			//return conn;
 			return new SqlConnection(builder.ConnectionString);
 		}
 	}
