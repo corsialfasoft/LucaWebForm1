@@ -11,7 +11,7 @@
 
     <%if(Messaggio != null){%>
         <div class="text-warning">
-       M: <%=Messaggio %>
+       <%=Messaggio %>
     <%} %>
     
     </div>

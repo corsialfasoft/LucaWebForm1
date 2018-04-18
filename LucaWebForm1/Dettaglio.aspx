@@ -9,10 +9,12 @@
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
     <div class="text">
-        Id = <%=LucaWebForm1._Ordina.CercaPerId %>
+<%--    Id = <%=LucaWebForm1._Ordina.CercaPerId %>--%>
+        Id = <%=prodotto.Id %>
     </div>
     <div class="text">
-        Descrizione = <%  = LucaWebForm1._Ordina.CercaPerDescr %>
+<%--        Descrizione = <%  = LucaWebForm1._Ordina.CercaPerDescr %>--%>
+        Descrizione = <%  = prodotto.Descrizione %>
     </div>
 
      <div class="text">
