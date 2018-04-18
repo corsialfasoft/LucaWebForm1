@@ -12,17 +12,24 @@
     <div class="text-warning">
         <%=Messaggio %>
     </div>
-
+    <div class="form-group">
     <%if(CercaPerId != null && CercaPerId != ""){%>
         <div class="text-warning">
         Id = <%=CercaPerId %>
     <%} %>
         </div>
+    </div>
+    <div class="form-group">
+
     <%if(CercaPerDescr != null && CercaPerDescr !=""){%>
         <div class="text-warning">
         Descrizione = <%  = CercaPerDescr %>
     <%} %>
         </div>
+     </div>
+
+     
+
 
     <asp:TextBox class="form-control" placeholder="Id..." ID="CercaId" runat="server" ></asp:TextBox>
     <asp:TextBox class="form-control" placeholder="Descrizione..." ID="CercaDescr" runat="server"></asp:TextBox>

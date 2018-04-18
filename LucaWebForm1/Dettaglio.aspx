@@ -14,6 +14,11 @@
     <div class="text">
         Descrizione = <%  = LucaWebForm1._Ordina.CercaPerDescr %>
     </div>
+
+     <div class="text">
+        Magazzino = <%  = prodotto.Magazzino %>
+    </div>
+
     <div>
     <asp:TextBox class="form-control" placeholder="Quantità" ID="Qnta" runat="server"></asp:TextBox>
         <asp:Button OnClick="Richista_Click" runat="server" /> Richiedi

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace LucaWebForm1 {
 	public partial class _Ordina : Page {
-		public List<Prodotto> listP = new List<Prodotto>();
+		public List<Prodotto> ListP { get; set; }
 		public string Messaggio{get;set;}
 		public static string CercaPerId { get; set; }
 		public static string CercaPerDescr { get; set; }
@@ -23,8 +23,8 @@ namespace LucaWebForm1 {
 				Response.Redirect($"~/Dettaglio.aspx?CercaId={CercaId.Text}");
 			} else if (!String.IsNullOrEmpty(CercaDescr.Text)) {
 				IDomainModel mock = new MockDomainModel();
-				listP = mock.CercaProdottoByDescr(CercaDescr.Text) ?? null;
-				foreach (Prodotto p in listP) {
+				ListP = mock.CercaProdottoByDescr(CercaDescr.Text) ?? null;
+				foreach (Prodotto p in ListP) {
 					TableRow tr = new TableRow();
 					TableCell tdCodice = new TableCell();
 					tdCodice.Controls.Add(new Label() { Text = p.Id.ToString(), CssClass = "col-xs-2" });

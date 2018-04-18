@@ -34,7 +34,7 @@ namespace LucaWebForm1 {
 					prodotti.Add(prodotto);
 				}
 				Session["listaRichieste"] = prodotti;
-				Response.Redirect("~/Ricerca.aspx?Message=Quantita aggiunta al carrello");
+				Response.Redirect("~/Ordina.aspx?Message=Quantita aggiunta al carrello");
 			} else {
 				Messaggio = "La quantità deve essere un valore numerico";
 			}
@@ -45,9 +45,10 @@ namespace LucaWebForm1 {
 		public int Id {get; set;}
 		public string Descrizione { get; set; }
 		public int Qta { get; set; }
+		public int Magazzino {get; set;}
 
-		public Prodotto p = new Prodotto();
-		public List<Prodotto> listP = new List<Prodotto>();
+		//public Prodotto p = new Prodotto();
+		//public List<Prodotto> listP = new List<Prodotto>();
 	}
 
 	public partial interface IDomainModel{
@@ -58,14 +59,14 @@ namespace LucaWebForm1 {
 
 	public partial class MockDomainModel : IDomainModel{
 		public Prodotto CercaProdotto(int id){
-			return new Prodotto(){Id=1, Descrizione ="Rondelle", Qta=7};
+			return new Prodotto(){Id=1, Descrizione ="Rondelle", Qta=7, Magazzino = 9876};
 		}
 
 		public List<Prodotto> CercaProdottoByDescr(string descr) {
 			return new List<Prodotto>(){
-				new Prodotto(){Id=1,Descrizione="Rondelle",Qta=500},
-				new Prodotto(){Id=2,Descrizione="Bulloni",Qta=10250},
-				new Prodotto(){Id=3,Descrizione="Dadi",Qta=675}
+				new Prodotto(){Id=1, Descrizione="Rondelle", Qta=500, Magazzino=9876},
+				new Prodotto(){Id=2, Descrizione="Bulloni", Qta=10250, Magazzino=2018},
+				new Prodotto(){Id=3, Descrizione="Dadi", Qta=675, Magazzino=2020}
 			};
 		}
 

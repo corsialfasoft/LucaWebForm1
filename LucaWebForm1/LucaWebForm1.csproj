@@ -129,6 +129,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Dettaglio.aspx" />
+    <Content Include="Carrello.aspx" />
     <Content Include="Ordina.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="Dettaglio.aspx.designer.cs">
       <DependentUpon>Dettaglio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Carrello.aspx.cs">
+      <DependentUpon>Carrello.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carrello.aspx.designer.cs">
+      <DependentUpon>Carrello.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ordina.aspx.cs">
       <DependentUpon>Ordina.aspx</DependentUpon>
