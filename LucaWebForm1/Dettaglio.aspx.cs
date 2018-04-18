@@ -34,7 +34,7 @@ namespace LucaWebForm1 {
 					prodotti.Add(prodotto);
 				}
 				Session["listaRichieste"] = prodotti;
-				Response.Redirect("~/Ordina.aspx?Message=Quantita aggiunta al carrello");
+				Response.Redirect("~/Ordina.aspx?Messaggio=Richiesta di ordine riuscita");
 			} else {
 				Messaggio = "La quantità deve essere un valore numerico";
 			}

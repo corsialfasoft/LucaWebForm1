@@ -9,8 +9,11 @@
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
 
-    <div class="text-warning">
-        <%=Messaggio %>
+    <%if(Messaggio != null){%>
+        <div class="text-warning">
+       M: <%=Messaggio %>
+    <%} %>
+    
     </div>
     <div class="form-group">
     <%if(CercaPerId != null && CercaPerId != ""){%>
@@ -27,6 +30,13 @@
     <%} %>
         </div>
      </div>
+   <%-- <div class="form-group">
+    <%if(prodotto.Magazzino != null && CercaPerId != ""){%>
+        <div class="text-warning">
+        Id = <%=CercaPerId %>
+    <%} %>
+        </div>
+    </div>--%>
 
      
 
