@@ -37,7 +37,7 @@ namespace LucaWebForm1 {
 					tdGiacenza.Controls.Add(new Label() { Text = p.Qta.ToString(), CssClass = "col-xs-2" });
 					tr.Cells.Add(tdGiacenza);
 					TableCell tdButton = new TableCell();
-					tdButton.Controls.Add(new Button() { Text = "detail", PostBackUrl = $"Dettaglio?CercaId={p.Id}", CssClass = "col-xs-2" });
+					tdButton.Controls.Add(new Button() { Text = "dettaglio", PostBackUrl = $"Dettaglio?CercaId={p.Id}", CssClass = "col-xs-2" });
 					tr.Cells.Add(tdButton);
 					Tablettino.Rows.Add(tr);
 				}

@@ -18,12 +18,12 @@
     </div>
 
      <div class="text">
-        Magazzino = <%  = prodotto.Magazzino %>
+        Magazzino = <%  = prodotto.Qta %>
     </div>
 
     <div>
     <asp:TextBox class="form-control" placeholder="Quantità" ID="Qnta" runat="server"></asp:TextBox>
-        <asp:Button OnClick="Richista_Click" runat="server" /> Richiedi
-        <a runat="server" href="~/Ordina">Indietro</a>
+        <asp:Button text="Richiedi" OnClick="Richista_Click" runat="server" /> 
+        <asp:Button text="Indietro" PostBackUrl="~/Ordina.aspx" runat="server"/>
     </div>
 </asp:Content>

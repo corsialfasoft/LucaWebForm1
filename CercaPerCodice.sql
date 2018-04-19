@@ -6,7 +6,7 @@ as
 	where @idCod = Id
 go
 
-exec CercaPerCodice 1;
+exec CercaPerCodice 3;
 
 select * from ProdottiSet;
 select * from RichiesteProdotti;

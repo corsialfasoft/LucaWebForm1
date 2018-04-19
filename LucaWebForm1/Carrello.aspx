@@ -22,9 +22,9 @@
         <div class="col-sm-4">
             <%=p.Qta%>
         </div>
-        <div class="col-sm-4">
+        <%--<div class="col-sm-4">
             <%=p.Magazzino%>
-        </div>
+        </div>--%>
     <%}} %>
     <asp:Button runat="server" OnClick="Richiedi_Click" class="btn btn-primary" Text="Richiedi" />
 </asp:Content>

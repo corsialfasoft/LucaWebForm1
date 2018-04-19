@@ -15,21 +15,22 @@
     <%} %>
     
     </div>
-    <div class="form-group">
+    <%--<div class="form-group">
     <%if(CercaPerId != null && CercaPerId != ""){%>
         <div class="text-warning">
         Id = <%=CercaPerId %>
     <%} %>
         </div>
-    </div>
-    <div class="form-group">
+    </div>--%>
 
+<%--    <div class="form-group">
     <%if(CercaPerDescr != null && CercaPerDescr !=""){%>
         <div class="text-warning">
         Descrizione = <%  = CercaPerDescr %>
     <%} %>
         </div>
-     </div>
+     </div>--%>
+
    <%-- <div class="form-group">
     <%if(prodotto.Magazzino != null && CercaPerId != ""){%>
         <div class="text-warning">
@@ -40,11 +41,13 @@
 
      
 
-
-    <asp:TextBox class="form-control" placeholder="Id..." ID="CercaId" runat="server" ></asp:TextBox>
-    <asp:TextBox class="form-control" placeholder="Descrizione..." ID="CercaDescr" runat="server"></asp:TextBox>
-        <asp:Button OnClick="Cerca_Click" runat="server" /> Cerca
-        <a runat="server" href="~/Dettaglio">Ordina</a>
+    <div class="form-group">
+        <asp:TextBox class="form-control" placeholder="Id..." ID="CercaId" runat="server" ></asp:TextBox>
+    </div>
+    <div class="form-group">
+        <asp:TextBox class="form-control" placeholder="Descrizione..." ID="CercaDescr" runat="server"></asp:TextBox>
+    </div>
+        <asp:Button Text ="Cerca" OnClick="Cerca_Click" runat="server" class="btn btn-primary" />
     <div class="table" style="margin-top:25px">
         <asp:Table ID="Tablettino" runat="server" width="100%"
             CellPadding="10"
