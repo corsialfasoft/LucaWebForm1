@@ -13,6 +13,7 @@ namespace LucaWebForm1 {
 		public static string CercaPerDescr { get; set; }
 
 		protected void Page_Load(object sender, EventArgs e) {
+			ListP = new List<Prodotto>();
 			Messaggio = Request["Messaggio"] ?? null;
 		}
 

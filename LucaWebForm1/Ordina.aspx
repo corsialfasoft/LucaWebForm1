@@ -5,6 +5,9 @@
     CodeBehind="Ordina.aspx.cs" 
     Inherits="LucaWebForm1._Ordina" %>
 
+<%@ Register TagPrefix="MineUC" TagName="TabellaProdotti" Src="~/Controls/ListProdotti.ascx" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
     <h3>Your contact page.</h3>
@@ -39,7 +42,7 @@
         </div>
     </div>--%>
 
-     
+
 
     <div class="form-group">
         <asp:TextBox class="form-control" textmode ="Number" placeholder="Id..." ID="CercaId" runat="server" ></asp:TextBox>
@@ -55,4 +58,8 @@
             HorizontalAlign="Center">
         </asp:Table>
     </div>
+    <%if(ListP.Count>0){%>
+        <MineUC:TabellaProdotti  ID="TabellaProdotti" runat="server" />
+    <%} %>
+
 </asp:Content>

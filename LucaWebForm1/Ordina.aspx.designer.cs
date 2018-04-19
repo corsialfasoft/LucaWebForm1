@@ -38,5 +38,14 @@ namespace LucaWebForm1 {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table Tablettino;
+        
+        /// <summary>
+        /// Controllo TabellaProdotti.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::LucaWebForm1.ListProdotti TabellaProdotti;
     }
 }
