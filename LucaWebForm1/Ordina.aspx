@@ -42,7 +42,7 @@
      
 
     <div class="form-group">
-        <asp:TextBox class="form-control" placeholder="Id..." ID="CercaId" runat="server" ></asp:TextBox>
+        <asp:TextBox class="form-control" textmode ="Number" placeholder="Id..." ID="CercaId" runat="server" ></asp:TextBox>
     </div>
     <div class="form-group">
         <asp:TextBox class="form-control" placeholder="Descrizione..." ID="CercaDescr" runat="server"></asp:TextBox>

@@ -16,27 +16,41 @@ namespace LucaWebForm1 {
 
 		protected void Page_Load(object sender, EventArgs e) {
 			prodotto = int.TryParse(Request["CercaId"], out int code) ? mock.CercaProdotto(code) : null;
-			if (prodotto == null) {
+			if (prodotto.Id == 0) {
 				Response.Redirect($"~/Ordina.aspx?Messaggio='prodotto non trovato'");
+			}else {
+				detail.p = prodotto;
+			}
+		}
+
+		protected void QtaValidator(Object oggetto, ServerValidateEventArgs argomenti) {
+			if (argomenti.Value.Equals("46") || argomenti.Value.Equals("58") || argomenti.Value.Equals("59")) {
+				argomenti.IsValid = true;
+			} else {
+				argomenti.IsValid = false;
 			}
 		}
 
 		protected void Richista_Click(object sender, EventArgs e) {
-			if (int.TryParse(Qnta.Text, out int qtaRichiesta)) {
-				List<Prodotto> prodotti = (List<Prodotto>)Session["listaRichieste"] ?? new List<Prodotto>();
-				var query = from prod in prodotti
-							where prod.Id == prodotto.Id
-							select prod;
-				if (query.FirstOrDefault() != null) {
-					query.FirstOrDefault().Qta = query.FirstOrDefault().Qta + qtaRichiesta;
+			if (Page.IsValid) {
+				if (int.TryParse(Qnta.Text, out int qtaRichiesta)) {
+					List<Prodotto> prodotti = (List<Prodotto>)Session["listaRichieste"] ?? new List<Prodotto>();
+					var query = from prod in prodotti
+								where prod.Id == prodotto.Id
+								select prod;
+					if (query.FirstOrDefault() != null) {
+						query.FirstOrDefault().Qta = query.FirstOrDefault().Qta + qtaRichiesta;
+					} else {
+						prodotto.Qta = qtaRichiesta;
+						prodotti.Add(prodotto);
+					}
+					Session["listaRichieste"] = prodotti;
+					Response.Redirect("~/Ordina.aspx?Messaggio=Richiesta di ordine riuscita");
 				} else {
-					prodotto.Qta = qtaRichiesta;
-					prodotti.Add(prodotto);
+					Messaggio = "La quantità deve essere un valore numerico";
 				}
-				Session["listaRichieste"] = prodotti;
-				Response.Redirect("~/Ordina.aspx?Messaggio=Richiesta di ordine riuscita");
 			} else {
-				Messaggio = "La quantità deve essere un valore numerico";
+				Messaggio = "Not Valid Page!!!";
 			}
 		}
 	}
