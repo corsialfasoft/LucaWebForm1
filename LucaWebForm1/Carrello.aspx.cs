@@ -20,7 +20,7 @@ namespace LucaWebForm1 {
 			foreach (Prodotto p in prodotti) {
 				mock.AddProdotto(p.Id, p.Qta);
 				Session["CercaPerId"] = p.Id;
-				Session["CercaPerDescr"] = p.Qta;
+				Session["CercaPerDescr"] = p.Descrizione;
 			}
 			Session["listaRichieste"] = null;
 

@@ -14,17 +14,18 @@
     <%if(prodotti!=null){
       foreach(var p in prodotti){ %>        
         <div class="col-sm-4">
-            <%=p.Id%>
+           Id:  <%=p.Id%>
         </div>
         <div class="col-sm-4">
-            <%=p.Descrizione%>
+           Descrizione: <%=p.Descrizione%>
         </div>
         <div class="col-sm-4">
-            <%=p.Qta%>
+           Magazzino: <%=p.Qta%>
         </div>
         <%--<div class="col-sm-4">
             <%=p.Magazzino%>
         </div>--%>
     <%}} %>
+    <br><br>
     <asp:Button runat="server" OnClick="Richiedi_Click" class="btn btn-primary" Text="Richiedi" />
 </asp:Content>
