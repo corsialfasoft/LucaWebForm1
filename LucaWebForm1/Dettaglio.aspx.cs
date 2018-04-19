@@ -65,8 +65,9 @@ namespace LucaWebForm1 {
 				//builder.DataSource = @"(localdb)\MSSQLLocalDB";
 				//builder.InitialCatalog = "RICHIESTE";
 				//SqlConnection conn = new SqlConnection(builder.ConnectionString);
-				Connessione().Open();
-				SqlCommand cmd = new SqlCommand("dbo.CercaPerCodice", Connessione());
+				SqlConnection cnt = Connessione();
+				cnt.Open();
+				SqlCommand cmd = new SqlCommand("dbo.CercaPerCodice", cnt);
 				cmd.CommandType = System.Data.CommandType.StoredProcedure;
 				cmd.Parameters.Add("@idCod", System.Data.SqlDbType.Int).Value = id;
 				SqlDataReader reader = cmd.ExecuteReader();
@@ -87,11 +88,36 @@ namespace LucaWebForm1 {
 		}
 
 		public List<Prodotto> CercaProdottoByDescr(string descr) {
-			return new List<Prodotto>(){
-				new Prodotto(){Id=1, Descrizione="Rondelle", Qta=500, Magazzino=9876},
-				new Prodotto(){Id=2, Descrizione="Bulloni", Qta=10250, Magazzino=2018},
-				new Prodotto(){Id=3, Descrizione="Dadi", Qta=675, Magazzino=2020}
-			};
+
+			//return new List<Prodotto>(){
+			//	new Prodotto(){Id=1, Descrizione="Rondelle", Qta=500, Magazzino=9876},
+			//	new Prodotto(){Id=2, Descrizione="Bulloni", Qta=10250, Magazzino=2018},
+			//	new Prodotto(){Id=3, Descrizione="Dadi", Qta=675, Magazzino=2020}
+			//};
+
+			List<Prodotto> listP = new List<Prodotto>();
+			try {				
+				SqlConnection cnt = Connessione();
+				cnt.Open();
+				SqlCommand cmd = new SqlCommand("dbo.CercaPerDescrizione", cnt);
+				cmd.CommandType = System.Data.CommandType.StoredProcedure;
+				cmd.Parameters.Add("@descr", System.Data.SqlDbType.NVarChar).Value = descr;
+				SqlDataReader reader = cmd.ExecuteReader();
+				while (reader.Read()) {
+					Prodotto p = new Prodotto();
+					p.Id = reader.GetInt32(0);
+					p.Descrizione = reader.GetString(1);
+					p.Qta = reader.GetInt32(2);
+					listP.Add(p);
+				}
+				reader.Close();
+				cmd.Dispose();
+			} catch (Exception e) {
+				throw e;
+			} finally {
+				Connessione().Dispose();
+			}
+			return listP;
 		}
 
 		public void AddProdotto(int idProd, int qta) {
