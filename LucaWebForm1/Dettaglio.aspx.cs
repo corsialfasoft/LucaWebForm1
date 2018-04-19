@@ -61,14 +61,21 @@ namespace LucaWebForm1 {
 		public Prodotto CercaProdotto(int id){
 			Prodotto p = new Prodotto();
 			try {
+				//SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+				//builder.DataSource = @"(localdb)\MSSQLLocalDB";
+				//builder.InitialCatalog = "RICHIESTE";
+				//SqlConnection conn = new SqlConnection(builder.ConnectionString);
 				Connessione().Open();
-				SqlCommand cmd = new SqlCommand("CercaPerCodice", Connessione());
+				SqlCommand cmd = new SqlCommand("dbo.CercaPerCodice", Connessione());
+				cmd.CommandType = System.Data.CommandType.StoredProcedure;
+				cmd.Parameters.Add("@idCod", System.Data.SqlDbType.Int).Value = id;
 				SqlDataReader reader = cmd.ExecuteReader();
 				while(reader.Read()){
 					p.Id = reader.GetInt32(0);
 					p.Descrizione = reader.GetString(1);
 					p.Qta = reader.GetInt32(2);
 				}
+				reader.Close();
 				cmd.Dispose();
 			}catch(Exception e){
 				throw e;
@@ -93,11 +100,11 @@ namespace LucaWebForm1 {
 
 		public SqlConnection Connessione(){
 			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-			builder.DataSource = @"(localdb)\MSSQLLocal-DB";
+			builder.DataSource = @"(localdb)\MSSQLLocalDB";
 			builder.InitialCatalog = "RICHIESTE";
-			//SqlConnection conn = new SqlConnection(builder.ConnectionString);
-			//return conn;
-			return new SqlConnection(builder.ConnectionString);
+			SqlConnection conn = new SqlConnection(builder.ConnectionString);
+			return conn;
+			//return new SqlConnection(builder.ConnectionString);
 		}
 	}
 }
