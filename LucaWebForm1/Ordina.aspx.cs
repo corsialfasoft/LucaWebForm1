@@ -19,8 +19,9 @@ namespace LucaWebForm1 {
 		protected void Cerca_Click(object sender, EventArgs e) {			
 			CercaPerId = CercaId.Text;
 			CercaPerDescr = CercaDescr.Text;
+			int.TryParse(CercaPerId, out int idCod);
 			if (!String.IsNullOrEmpty(CercaId.Text)) {
-				Response.Redirect($"~/Dettaglio.aspx?CercaId={CercaId.Text}");
+				Response.Redirect($"~/Dettaglio.aspx?CercaId={idCod}");
 			} else if (!String.IsNullOrEmpty(CercaPerDescr)) {
 				IDomainModel mock = new MockDomainModel();
 				ListP = mock.CercaProdottoByDescr(CercaDescr.Text) ?? null;
